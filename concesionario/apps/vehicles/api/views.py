@@ -11,7 +11,7 @@ class VehicleApiView(APIView):
     """Conjunto de vistas para el modelo Vehicle."""
 
     def get(self, request):
-        queryset = Vehicle.objects.all()
+        queryset = Vehicle.objects.all().order_by("id")
         serializer = VehicleSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
